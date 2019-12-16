@@ -48,6 +48,10 @@
         - GET
             - Retorna todos os tipos existentes no banco.
 
+    /api/senha/fila 
+        - GET
+            - Retorna a fila com as últimas senhas chamadas.
+
     /api/user/create 
         - POST
             - Cria um usuário e a senha para acesso ao token da API.
