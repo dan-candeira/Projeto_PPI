@@ -104,3 +104,9 @@ class Atendimento(models.Model):
 
     def __str__(self):
         return self.hora_data_ini
+
+
+class Fila(models.Model):
+    guiche = models.ForeignKey(Guiche, on_delete=models.CASCADE)
+    senha = models.ForeignKey(Senha, on_delete=models.CASCADE)
+    on_call = models.BooleanField(default=False)

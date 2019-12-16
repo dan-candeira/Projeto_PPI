@@ -53,6 +53,6 @@ urlpatterns += [
 
 # Adicionando caminhas para Chamar nova Senha, Chamar senha novamente
 urlpatterns += [
-    path('senha/chamar/nova', views.ChamarNovaSenhaView.as_view(), name='chamar_nova_senha'),
+    path('atendimento/chamar/senha', views.ChamarNovaSenhaView.as_view(), name='chamar_nova_senha'),
     path('senha/chamar/<int:pk>/', views.ChamarSenhaNovamenteView.as_view(), name='chamar_senha_novamente')
 ]

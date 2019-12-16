@@ -186,8 +186,12 @@ class ChamarNovaSenhaView(TemplateView):
             senha = models.Senha.objects.filter(status=models.StatusSenha.objects.get(nome='Na fila')).order_by('hora_data')[0]
             senha.status = models.StatusSenha.objects.get(nome ='Em atendimento')
             senha.save()
+
+            models.Fila(guiche=models.Guiche.objects.get(id=1), senha=senha, on_call=True).save()
+            
         else:
             senha = {'msg':'Não há senhas na fila'}
+        
         return render(request, self.template_name, {'senha': senha})
 
 class ChamarSenhaNovamenteView(TemplateView):
@@ -195,10 +199,12 @@ class ChamarSenhaNovamenteView(TemplateView):
     template_name = "public/atendimento.html"
 
     def get(self, request, *args, **kwargs):
-        if self.kwargs['pk'][1] != 0:
-            senha = models.Senha.objects.get(id=self.kwargs['pk'])
-        else:
-            senha = {'msg':'Não há senhas na fila'}
+        print(self.kwargs)
+        # if self.kwargs['pk'][1] != 0:
+        #     senha = models.Senha.objects.get(id=self.kwargs['pk'])
+        # else:
+        #     senha = {'msg':'Não há senhas na fila'}
+        senha = models.Senha.objects.get(id=self.kwargs['pk'])
         
         return render(request, self.template_name, {'senha': senha})
 

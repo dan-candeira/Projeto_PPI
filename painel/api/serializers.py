@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.utils import timezone
-from api.models import Tipo, Senha, Categoria, Atendimento, StatusSenha
+from api.models import Tipo, Senha, Categoria, Atendimento, StatusSenha, Fila
 
 
 class TipoSerializer(serializers.ModelSerializer):
@@ -32,6 +32,15 @@ class CategoriaSerializer(serializers.ModelSerializer):
         model = Categoria
         fields = ('id', 'nome',)
         read_only_fields = ('id',)
+
+
+class FilaSerializer(serializers.ModelSerializer):
+    """Serializer para os objetos Fila"""
+    class Meta:
+        model = Fila
+        fields = ('id','senha', 'guiche',)
+        read_only_fields = ('id','senha', 'guiche',)
+
 
 
 def nova_senha (validated_data):

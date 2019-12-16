@@ -6,6 +6,7 @@ router = DefaultRouter()
 router.register('', views.SenhaViewSet)
 router.register('categoria', views.CategoriaViewSet)
 router.register('tipo', views.TipoViewSet)
+router.register('fila', views.FilaViewSet)
 
 app_name = 'api'
 
